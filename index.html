@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<title>Anybox首页</title>
+		<link rel="icon" type="image/png" href="own/image/tab.png">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="own/css/index.css">
+		<link rel="stylesheet" type="text/css" href="own/css/login.css">
+		<script src="jquery/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header
+				class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+				<a href="anybox_pages_default.html" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+					<img class="mb-4" src="own/image/box.png" alt="box.png" id="box-left-top">
+				</a>
+
+				<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="anybox_pages_default.html#" class="nav-link px-2 link-secondary">主页</a></li>
+					<li><a href="anybox_pages_default.html#" class="nav-link px-2 link-dark">介绍</a></li>
+					<li><a href="anybox_pages_default.html#" class="nav-link px-2 link-dark">联系</a></li>
+					<li><a href="anybox_pages_default.html#" class="nav-link px-2 link-dark">关于</a></li>
+				</ul>
+
+				<div class="col-md-3 text-end">
+					<button type="button" class="btn btn-outline-primary me-2">登录</button>
+					<button type="button" class="btn btn-primary">注册</button>
+				</div>
+			</header>
+		</div>
+		<div>
+			<form class="loginForm">
+				<div class="form-center">
+					<img class="mb-4" src="own/image/box.png" alt="box.png" id="box-png">
+					<h1 class="h3 mb-3 fw-normal">请登录</h1>
+					<span class="errorMsg w-80p" id="errorMsg"></span>
+				</div>
+				<div class="form-floating">
+					<input type="text" class="form-control w-80p" id="account" label="QQ号" placeholder="QQ号">
+					<label>QQ号</label><br />
+				</div>
+				<div class="form-floating">
+					<input type="password" class="form-control w-80p" id="password" label="Anybox密码"
+						placeholder="Anybox密码">
+					<label>Anybox密码</label><br />
+				</div>
+				<div class="form-center-20">
+					<div class="checkbox mb-3">
+						<label>
+							<input type="checkbox" value="remember-me">记住我</label>
+					</div>
+				</div>
+				<br /><br />
+				<div class="form-center-50">
+					<button class="w-80p btn btn-lg btn-primary" type="submit" id="login">登录</button>
+					<p class="mt-5 mb-3 text-muted" id="any-box"></p>
+					<p class="text-muted">Administrator <img width="13px" height="16px" src="own/image/QQ.png">
+						2659442902</p>
+				</div>
+			</form>
+		</div>
+		<script>
+			$(function() {
+				$('#any-box').text('© 2023-' + new Date().getFullYear() + ' Anybox ');
+			});
+			$('#login').click(function() {
+				event.preventDefault();
+				$('#errorMsg').text('');
+				const qqRegexp = /^[1-9][0-9]{4,}$/;
+				let account = $('#account').val();
+				let password = $('#password').val();
+				if (!account || !password) {
+					$('#errorMsg').text('账号与密码不能为空！');
+					$('#password').val('');
+				} else if (password.length < 6) {
+					$('#errorMsg').text('密码长度至少6位！');
+					$('#password').val('');
+				} else if (!qqRegexp.test(account)) {
+					$('#errorMsg').text('请输入正确的QQ号！');
+					$('#password').val('');
+				} else if (account != password) {
+					$('#errorMsg').text('账号或密码不正确！');
+					$('#password').val('');
+				} else {
+					const accounts = ['2659442902', '3060229096', '212172439', '3208822177'];
+					let t = Math.floor(new Date().getTime() / 1000);
+					if (accounts.includes(account)) {
+						const number = t + parseInt(account);
+						window.location.href = 'fireworks.html?number=' + number + '&t=' + t;
+					} else {
+						$('#errorMsg').text('账号不存在，添加账号联系管理员');
+						$('#password').val('');
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

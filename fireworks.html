@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.dmaku.com/demo/jquery/2019043097575650/ -->
+<html lang="zh-CN">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Anybox欢迎</title>
+		<link rel="icon" type="image/png" href="own/image/tab.png">
+		<link rel="stylesheet" href="own/css/fireworks.css">
+		<script src="jquery/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="center">
+			<div class="text-centers">
+				<span id="nickname"></span>
+			</div>
+			<div class="center circle-avatar">
+				<img id="avatar">
+			</div>
+		</div>
+		<div>
+			<canvas width="1080" height="540"></canvas>
+			<canvas width="2160" height="1080"></canvas>
+			<canvas width="2160" height="1080"></canvas>
+		</div>
+		<div class="center bottom-footer">
+			<span id="endHtml"></span>
+		</div>
+		<script src="own/js/fireworks.js"></script>
+		<script>
+			$(function() {
+				const urlParams = new URLSearchParams(window.location.search);
+				const number = urlParams.get('number');
+				const t = urlParams.get('t');
+				var account = parseInt(number) - parseInt(t);
+				if (!account || account === 0) {
+					account = '2659442902';
+				}
+				const accounts = ['2659442902', '3060229096', '212172439', '3208822177'];
+				if (accounts.includes(account.toString())) {
+					//获取昵称
+					let nickname='';
+					$.ajax({
+						url: 'https://api.oioweb.cn/api/qq/info?qq=' + account,
+						type: 'GET',
+						dataType: 'json',
+						async: false,
+						timeout: 50000,
+						success: function(data) {
+							var data = data.result;
+							nicknamec = data.nickname;
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							if (account == '2659442902') {
+								alert('获取账号QQ昵称失败：' + textStatus + '，' + errorThrown);
+								nickname = 'yxl';
+							}
+						}
+					});
+					$('#nickname').text(nickname);
+					//头像
+					const imageUrl = 'https://q.qlogo.cn/headimg_dl?dst_uin=' + account + '&spec=640';
+					$('#avatar').attr('src', imageUrl);
+					//右下角欢迎词
+					let word = 'Welcome';
+					let endHtml = '';
+					if (account != '2659442902') {
+						endHtml = '偷偷登录被发现了吧';
+					}
+					setWord(word);
+					$('#endHtml').html(endHtml);
+
+				} else {
+					alert('账号' + account + '不存在，请联系管理员添加！');
+					window.location.href = 'index.html';
+				}
+			});
+		</script>
+	</body>
+</html>
