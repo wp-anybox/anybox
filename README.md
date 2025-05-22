@@ -1,1 +1,1 @@
-# anybox
+# 个人静态网页 https://anybox.eu.org
