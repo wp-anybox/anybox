@@ -88,7 +88,12 @@
 					let t = Math.floor(new Date().getTime() / 1000);
 					if (accounts.includes(account)) {
 						const number = t + parseInt(account);
-						window.location.href = 'fireworks.html?number=' + number + '&t=' + t;
+						let today = new Date();
+						if (today.getMonth() == 10 && today.getDate() == 12 && account == '2659442902') {
+							window.location.href = 'birthday.html?number=' + number + '&t=' + t;
+						} else {
+							window.location.href = 'fireworks.html?number=' + number + '&t=' + t;
+						}
 					} else {
 						$('#errorMsg').text('账号不存在，添加账号联系管理员');
 						$('#password').val('');
