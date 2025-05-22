@@ -1,0 +1,91 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+#box-png {
+    width: 88px;
+    height: 88px;
+}
+
+.loginForm {
+    border-radius: 8px 8px 8px 8px;
+    background-attachment: fixed;
+    background-color: #ffffff;
+    width: 400px;
+    height: 600px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.registerForm {
+    border-radius: 8px 8px 8px 8px;
+    background-attachment: fixed;
+    background-color: #ffffff;
+    width: 400px;
+    height: 700px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+}
+
+.form-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* 设置高度以保持居中对齐的效果 */
+}
+
+.form-center-50 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* 设置高度以保持居中对齐的效果 */
+}
+
+.form-center-20 {
+    display: flex;
+    margin: 20px 0; /* 上方和下方各添加 20 像素的间距 */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20px; /* 设置高度以保持居中对齐的效果 */
+}
+
+.form-floating label {
+    text-indent: 50px;
+}
+
+.w-80p {
+    width: 80%;
+    margin: auto;
+}
+
+.errorMsg {
+    position: absolute;
+    margin: 180px 20px 5px 40px;
+    color: #ff0000;
+}
